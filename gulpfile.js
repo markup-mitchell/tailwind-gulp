@@ -53,12 +53,9 @@ function dev() {
   gulp.watch(['src/css/styles.css','src/html/**/*.html']);
 };
 
-gulp.task('html', minifyHtml);
-gulp.task('css', minifyCss);
+// gulp.task(html, minifyHtml);
+// gulp.task(css, minifyCss);
 
 gulp.task('refresh', gulp.parallel(minifyHtml,css));
 
-gulp.task(dev, 'refresh');
-
-
-// gulp.task('build', series(minifyHtml,minifyCss))
+gulp.task('build', gulp.series(minifyHtml,minifyCss))
