@@ -49,9 +49,10 @@ function minifyCss() {
     .pipe(gulp.dest('build/'));
 }
 
-function dev() {
-  gulp.watch(['src/css/styles.css','src/html/**/*.html']);
-};
+function watch_files() {
+  gulp.watch('src/css/styles.css', css);
+  gulp.watch('src/html/*.html', minifyHtml);
+}
 
 // gulp.task(html, minifyHtml);
 // gulp.task(css, minifyCss);
@@ -59,3 +60,5 @@ function dev() {
 gulp.task('refresh', gulp.parallel(minifyHtml,css));
 
 gulp.task('build', gulp.series(minifyHtml,minifyCss))
+
+gulp.task('watch', watch_files);
