@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const {watch} = require('gulp');
 const postcss = require('gulp-postcss');
 
 const tailwindcss = require('tailwindcss');
@@ -7,13 +8,13 @@ const autoprefixer = require('autoprefixer');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const htmlmin = require('gulp-htmlmin');
 
-gulp.task('minify:html', () => {
+function minifyHtml() {
   return gulp.src('src/html/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist/'));
-});
+}
 
-gulp.task('minify:css', () => {
+function minifyCss() {
   const plugins = [
     cssnano(),
     purgecss({
@@ -22,9 +23,9 @@ gulp.task('minify:css', () => {
   return gulp.src('dist/styles.css')
     .pipe(postcss(plugins))
     .pipe(gulp.dest('build/'));
-});
+}
 
-gulp.task('css', function () {
+function css() {
   const plugins = [
     tailwindcss('./tailwind.js'),
     autoprefixer({browsers: ['last 1 version']})
@@ -32,4 +33,20 @@ gulp.task('css', function () {
   return gulp.src('src/css/styles.css')
     .pipe(postcss(plugins))
     .pipe(gulp.dest('dist/'));
-});
+};
+
+function dev() {
+  gulp.watch(['src/css/styles.css','src/html/**/*.html']);
+};
+
+
+// function watchFiles() {
+//   gulp.watch('src/css/styles.css', css);
+//   gulp.watch('src/html/*.html', minify);
+// }
+
+gulp.task('refresh', gulp.parallel(minifyHtml,css));
+
+gulp.task(dev, 'refresh');
+
+// gulp.task('build', series(minifyHtml,minifyCss))

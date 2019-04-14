@@ -1,6 +1,9 @@
 @tailwind preflight;
 @tailwind components;
 /* custom components go here*/
+.new-custom {
+  color: black;
+};
 
 @tailwind utilities;
 /* custom utilities go here */
