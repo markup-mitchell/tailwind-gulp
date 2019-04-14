@@ -1,13 +1,14 @@
 {
   "name": "tailwind-gulp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "a vanilla html/css starter using tailwind and gulp",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "gulp serve",
+    "build": "gulp build"
   },
   "keywords": [],
-  "author": "",
+  "author": "markup.mitchell@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.1.0",
