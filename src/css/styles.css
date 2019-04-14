@@ -2,13 +2,5 @@
 @tailwind components;
 /* custom components go here*/
 
-.new-custom {
-  color: black;
-};
-
-.another-class {
-  width: 100%;
-};
-
 @tailwind utilities;
 /* custom utilities go here */
