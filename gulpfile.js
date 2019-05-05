@@ -74,5 +74,5 @@ gulp.task('refresh', gulp.parallel(minifyHtml,css));
 
 gulp.task('build', gulp.series(minifyHtml,minifyCss))
 
-gulp.task('serve', gulp.parallel(serve,watch_files));
+gulp.task('serve', gulp.series(css,gulp.parallel(serve,watch_files)));
 
